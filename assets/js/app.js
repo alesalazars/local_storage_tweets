@@ -28,18 +28,7 @@ function agregarTweet(e){
   // Leer el valor de textarea
   const tweet = document.getElementById('tweet').value;
 
-  // Crear boton de eliminar
-  const botonBorrar = document.createElement('a');
-  botonBorrar.classList = 'borrar-tweet';
-  botonBorrar.innerText = 'X';
-
-  // Crear elemento y añadirle el contenido a la lista
-  const li = document.createElement('li');
-  li.innerText = tweet;
-  // Añade el botón de borrar al tweet
-  li.appendChild(botonBorrar)
-  // Añade el tweet a la lista
-  listaTweets.appendChild(li);
+  crearTweetEnDom(tweet);
 
   // Añadir a Local Storage
   agregarTweetLocalStorage(tweet);
@@ -61,19 +50,23 @@ function localStorageListo(){
   tweets = obtenerTweetsLocalStorage();
 
   tweets.forEach(function(tweet){
-    // Crear boton de eliminar
-    const botonBorrar = document.createElement('a');
-    botonBorrar.classList = 'borrar-tweet';
-    botonBorrar.innerText = 'X';
-
-    // Crear elemento y añadirle el contenido a la lista
-    const li = document.createElement('li');
-    li.innerText = tweet;
-    // Añade el botón de borrar al tweet
-    li.appendChild(botonBorrar)
-    // Añade el tweet a la lista
-    listaTweets.appendChild(li);
+    crearTweetEnDom(tweet);
   });
+}
+
+function crearTweetEnDom(tweet){
+  // Crear boton de eliminar
+  const botonBorrar = document.createElement('a');
+  botonBorrar.classList = 'borrar-tweet';
+  botonBorrar.innerText = 'X';
+
+  // Crear elemento y añadirle el contenido a la lista
+  const li = document.createElement('li');
+  li.innerText = tweet;
+  // Añade el botón de borrar al tweet
+  li.appendChild(botonBorrar)
+  // Añade el tweet a la lista
+  listaTweets.appendChild(li);
 }
 
 // Agrega tweet a Local Storage
